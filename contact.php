@@ -53,8 +53,11 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
+		
 		<?include("top/top-menu.php")?>
+		<!-- скидка -->
 			<?include("top/sale.php")?>
+		<!-- скидка -->
 		</nav>
 
 		<div class="breadcrumbs">
@@ -66,7 +69,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<div id="colorlib-contact">
 			<div class="container">
@@ -145,9 +147,9 @@
 				</div>
 			</div>
 		</div>
-
+<!-- подвал -->
 		<?include("footer.php")?>
-		
+<!-- подвал -->
 	</div>
 
 	<div class="gototop js-top">
