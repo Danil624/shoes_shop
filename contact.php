@@ -147,6 +147,7 @@
 		</div>
 
 		<?include("footer.php")?>
+		
 	</div>
 
 	<div class="gototop js-top">
