@@ -53,7 +53,9 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
+		<!-- шапка -->
 		<?include("top/top-menu.php")?>
+               <!-- скидка -->
 			<?include("top/sale.php")?>
 		</nav>
 
@@ -145,7 +147,7 @@
 				</div>
 			</div>
 		</div>
-
+               <!-- подвал -->
 		<?include("footer.php")?>
 		
 	</div>

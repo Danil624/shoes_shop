@@ -42,6 +42,7 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
+			<!-- шапка -->
 			<? include("top/top-menu.php")?>
 			<div class="sale">
 				<div class="container">
