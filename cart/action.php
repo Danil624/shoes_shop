@@ -43,7 +43,6 @@
 		$stmt->execute();
 		$stmt->store_result();
 		$rows = $stmt->num_rows;
-  
 		echo $rows;
 	  }
 
@@ -59,8 +58,6 @@
 		$_SESSION['message'] = 'Item removed from the cart!';
 		header('location:cart.php');
 	  }
-  
-
 	// Удалить сразу все товары из корзины
 	if (isset($_GET['clear']))
 	{
@@ -70,7 +67,6 @@
 		$_SESSION['message'] = 'All Item removed from the cart!';
 		header('location:cart.php');
 	  }
-
 	// Установить общую стоимость товара в таблице корзины
 	if (isset($_POST['qty']))
 	 {
