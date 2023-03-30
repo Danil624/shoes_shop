@@ -13,7 +13,6 @@
 		</nav>     
 		<aside id="colorlib-hero">
 			<?include("top/top-slide.php")?>
-
 		</aside>
 		<div class="colorlib-intro">
 			<div class="container">
