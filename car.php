@@ -119,7 +119,8 @@
 </td>
 						
 <tbody>
-              <?php
+
+              <?php // подключение
                 $conn = new mysqli("localhost", "qwe", "232001","shoes");
                 $stmt = $conn->prepare('SELECT * FROM cart');
                 $stmt->execute();
