@@ -5,7 +5,7 @@
 	$allItems = '';
 	$items = [];
 
-	$sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM cart";
+	$sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM produc";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute();
 	$result = $stmt->get_result();

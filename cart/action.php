@@ -12,7 +12,7 @@
 		$pqty = $_POST['pqty'];
 		$total_price = $pprice * $pqty;
   
-		$stmt = $conn->prepare('SELECT product_code FROM cart WHERE product_code=?');
+		$stmt = $conn->prepare('SELECT product_code FROM produc WHERE product_code=?');
 		$stmt->bind_param('s',$pcode);
 		$stmt->execute();
 		$res = $stmt->get_result();
@@ -96,7 +96,7 @@
 		$stmt = $conn->prepare('INSERT INTO orders (name,email,phone,address,pmode,products,amount_paid)VALUES(?,?,?,?,?,?,?)');
 		$stmt->bind_param('sssssss',$name,$email,$phone,$address,$pmode,$products,$grand_total);
 		$stmt->execute();
-		$stmt2 = $conn->prepare('DELETE FROM cart');
+		$stmt2 = $conn->prepare('DELETE FROM produc');
 		$stmt2->execute();
 		$data .= '<div class="text-center">
 								  <h1 class="display-4 mt-2 text-danger">Thank You!</h1>

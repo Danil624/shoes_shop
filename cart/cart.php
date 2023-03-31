@@ -64,11 +64,11 @@
               </tr>
               <tr>
                 <th>ID</th>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
+                <th>Изображение</th>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Сумма</th>
                 <th>
                   <a href="action.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
                 </th>
@@ -77,7 +77,7 @@
             <tbody>
               <?php
                 $conn = new mysqli("localhost", "qwe", "232001","shoes");
-                $stmt = $conn->prepare('SELECT * FROM cart');
+                $stmt = $conn->prepare('SELECT * FROM produc');
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $grand_total = 0;
@@ -104,10 +104,10 @@
               <?php endwhile; ?>
               <tr>
                 <td colspan="3">
-                  <a href="/footwear/index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue
-                    Shopping</a>
+                  <a href="/footwear/index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Продолжить
+                    покупки</a>
                 </td>
-                <td colspan="2"><b>Grand Total</b></td>
+                <td colspan="2"><b>Сумма</b></td>
                 <td><b><i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;<?= number_format($grand_total,2); ?></b></td>
                 <td>
                   <a href="checkout.php" class="btn btn-info <?= ($grand_total > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Checkout</a>
