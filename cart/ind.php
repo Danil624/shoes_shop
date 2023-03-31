@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Sahil Kumar">
@@ -11,17 +14,17 @@
 <body>
   <!-- панель навигации -->
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;магазин</a>
+    <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="index.php"><i class="fas fa-mobile-alt mr-2"></i>Товары</a>
+          <a class="nav-link active" href="index.php"><i class="fas fa-mobile-alt mr-2"></i>Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-th-list mr-2"></i>Категории</a>
+          <a class="nav-link" href="#"><i class="fas fa-th-list mr-2"></i>Categories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="checkout.php"><i class="fas fa-money-check-alt mr-2"></i>Checkout</a>
@@ -32,14 +35,14 @@
       </ul>
     </div>
   </nav>
-  <!-- панель навигации -->
+   <!-- панель навигации -->
   <!-- Отображение продуктов начало -->
   <div class="container">
     <div id="message"></div>
     <div class="row mt-2 pb-3">
-      <?php
-  			$conn = new mysqli("localhost", "qwe", "232001","shoes");
-  			$stmt = $conn->prepare('SELECT * FROM produc');
+      <?php 
+      include 'config.php';
+  			$stmt = $conn->prepare('SELECT * FROM product');
   			$stmt->execute();
   			$result = $stmt->get_result();
   			while ($row = $result->fetch_assoc()):
@@ -78,7 +81,8 @@
       <?php endwhile; ?>
     </div>
   </div>
-  <!--Отображение продуктов конец -->
+    <!--Отображение продуктов конец -->
+
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
@@ -86,7 +90,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-    //Отправить информацию о продукте на сервер
+      //Отправить информацию о продукте на сервер
     $(".addItemBtn").click(function(e) {
       e.preventDefault();
       var $form = $(this).closest(".form-submit");

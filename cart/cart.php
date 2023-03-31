@@ -15,7 +15,8 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 </head>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
     <!-- Toggler/collapsibe Button -->
@@ -63,7 +64,7 @@
                 </td>
               </tr>
               <tr>
-                <th>ID</th>
+              <th>ID</th>
                 <th>Изображение</th>
                 <th>Товар</th>
                 <th>Цена</th>
@@ -76,8 +77,8 @@
             </thead>
             <tbody>
               <?php
-                $conn = new mysqli("localhost", "qwe", "232001","shoes");
-                $stmt = $conn->prepare('SELECT * FROM produc');
+               include 'config.php';
+                $stmt = $conn->prepare('SELECT * FROM cart');
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $grand_total = 0;
@@ -104,10 +105,10 @@
               <?php endwhile; ?>
               <tr>
                 <td colspan="3">
-                  <a href="/footwear/index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Продолжить
-                    покупки</a>
+                  <a href="index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue
+                    Shopping</a>
                 </td>
-                <td colspan="2"><b>Сумма</b></td>
+                <td colspan="2"><b>Grand Total</b></td>
                 <td><b><i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;<?= number_format($grand_total,2); ?></b></td>
                 <td>
                   <a href="checkout.php" class="btn btn-info <?= ($grand_total > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Checkout</a>
@@ -120,15 +121,14 @@
     </div>
   </div>
 
-
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
 
   <script type="text/javascript">
   $(document).ready(function() {
+
     // Изменить количество товара
-    $(".itemQty").on('change', function() 
-    {
+    $(".itemQty").on('change', function() {
       var $el = $(this).closest('tr');
 
       var pid = $el.find(".pid").val();
@@ -153,19 +153,20 @@
     // Загрузить общее количество товаров, добавленных в корзину, и отобразить их на панели навигации.
     load_cart_item_number();
 
-function load_cart_item_number() {
-  $.ajax({
-    url: 'action.php',
-    method: 'get',
-    data: {
-      cartItem: "cart_item"
-    },
-    success: function(response) {
-      $("#cart-item").html(response);
+    function load_cart_item_number() {
+      $.ajax({
+        url: 'action.php',
+        method: 'get',
+        data: {
+          cartItem: "cart_item"
+        },
+        success: function(response) {
+          $("#cart-item").html(response);
+        }
+      });
     }
   });
-}
-});
-   
   </script>
 </body>
+
+</html>

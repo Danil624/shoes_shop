@@ -1,11 +1,11 @@
 <?php
-	$conn = new mysqli("localhost", "qwe", "232001","shoes");;
+	include 'config.php';
 
 	$grand_total = 0;
 	$allItems = '';
 	$items = [];
 
-	$sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM produc";
+	$sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM cart";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute();
 	$result = $stmt->get_result();
@@ -31,7 +31,7 @@
 <body>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="ind.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
+    <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="ind.php"><i class="fas fa-mobile-alt mr-2"></i>Products</a>
+          <a class="nav-link active" href="index.php"><i class="fas fa-mobile-alt mr-2"></i>Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fas fa-th-list mr-2"></i>Categories</a>
@@ -60,24 +60,24 @@
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Complete your order!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="lead"><b>товары : </b><?= $allItems; ?></h6>
-          <h6 class="lead"><b>доставка : </b>бесплатно</h6>
-          <h5><b>Общая сумма к оплате : </b><?= number_format($grand_total,2) ?>/-</h5>
+          <h6 class="lead"><b>Product(s) : </b><?= $allItems; ?></h6>
+          <h6 class="lead"><b>Delivery Charge : </b>Free</h6>
+          <h5><b>Total Amount Payable : </b><?= number_format($grand_total,2) ?>/-</h5>
         </div>
         <form action="" method="post" id="placeOrder">
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Введите имя" required>
+            <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
           </div>
           <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Введите почту" required>
+            <input type="email" name="email" class="form-control" placeholder="Enter E-Mail" required>
           </div>
           <div class="form-group">
-            <input type="tel" name="phone" class="form-control" placeholder="Введите телефон" required>
+            <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
           </div>
           <div class="form-group">
-            <textarea name="address" class="form-control" rows="3" cols="10" placeholder="Введите адрес доставки здесь..."></textarea>
+            <textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..."></textarea>
           </div>
           <h6 class="text-center lead">Select Payment Mode</h6>
           <div class="form-group">
@@ -98,9 +98,9 @@
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
- <script type="text/javascript">
- 
- $(document).ready(function() {
+
+  <script type="text/javascript">
+  $(document).ready(function() {
 
     // Отправка данных формы на сервер
     $("#placeOrder").submit(function(e) {
