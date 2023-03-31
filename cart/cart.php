@@ -77,7 +77,7 @@
             </thead>
             <tbody>
               <?php
-                $conn = new mysqli("localhost", "qwe", "232001","shoes");
+               include 'config.php';
                 $stmt = $conn->prepare('SELECT * FROM cart');
                 $stmt->execute();
                 $result = $stmt->get_result();

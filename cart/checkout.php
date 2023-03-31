@@ -1,5 +1,5 @@
 <?php
-	$conn = new mysqli("localhost", "qwe", "232001","shoes");;
+	include 'config.php';
 
 	$grand_total = 0;
 	$allItems = '';

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$conn = new mysqli("localhost", "qwe", "232001","shoes");
+	include 'config.php';
 	// Добавьте товары в корзину
 	if (isset($_POST['pid'])) {
 	  $pid = $_POST['pid'];

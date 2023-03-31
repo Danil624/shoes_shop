@@ -40,8 +40,8 @@
   <div class="container">
     <div id="message"></div>
     <div class="row mt-2 pb-3">
-      <?php
-  			$conn = new mysqli("localhost", "qwe", "232001","shoes");
+      <?php 
+      include 'config.php';
   			$stmt = $conn->prepare('SELECT * FROM product');
   			$stmt->execute();
   			$result = $stmt->get_result();
