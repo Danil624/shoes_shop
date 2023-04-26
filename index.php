@@ -7,9 +7,10 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
-			<? include("top/top-menu.php")?>
+		<!-- шапка	 --> 
+		<? include("top/top-menu.php")?>   
 			<? include("top/sale.php")?>
-		</nav>
+		</nav>     
 		<aside id="colorlib-hero">
 			<?include("top/top-slide.php")?>
 		</aside>
