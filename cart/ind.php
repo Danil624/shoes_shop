@@ -1,8 +1,5 @@
 <head>
-  <meta charset="UTF-8">
-  <meta name="author" content="Sahil Kumar">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   <title>Shopping Cart System</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
@@ -17,15 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.php"><i class="fas fa-mobile-alt mr-2"></i>Товары</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-th-list mr-2"></i>Категории</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="checkout.php"><i class="fas fa-money-check-alt mr-2"></i>Checkout</a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a>
         </li>
@@ -40,7 +29,7 @@
     <div class="row mt-2 pb-3">
       <?php
   			$conn = new mysqli("localhost", "qwe", "232001","shoes");
-  			$stmt = $conn->prepare('SELECT * FROM produc');
+  			$stmt = $conn->prepare('SELECT * FROM product');
   			$stmt->execute();
   			$result = $stmt->get_result();
   			while ($row = $result->fetch_assoc()):
@@ -58,7 +47,7 @@
               <form action="" class="form-submit">
                 <div class="row p-2">
                   <div class="col-md-6 py-1 pl-4">
-                    <b>Quantity : </b>
+                    <b>Кол-во : </b>
                   </div>
                   <div class="col-md-6">
                     <input type="number" class="form-control pqty" value="<?= $row['product_qty'] ?>">
@@ -69,8 +58,7 @@
                 <input type="hidden" class="pprice" value="<?= $row['product_price'] ?>">
                 <input type="hidden" class="pimage" value="<?= $row['product_image'] ?>">
                 <input type="hidden" class="pcode" value="<?= $row['product_code'] ?>">
-                <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-                  cart</button>
+                <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Добавить</button>
               </form>
             </div>
           </div>
