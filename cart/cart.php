@@ -69,7 +69,7 @@
             <tbody>
               <?php
                 $conn = new mysqli("localhost", "qwe", "232001","shoes");
-                $stmt = $conn->prepare('SELECT * FROM produc');
+                $stmt = $conn->prepare('SELECT * FROM cart');
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $grand_total = 0;

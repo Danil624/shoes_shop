@@ -12,7 +12,7 @@
 		$pqty = $_POST['pqty'];
 		$total_price = $pprice * $pqty;
   
-		$stmt = $conn->prepare('SELECT product_code FROM produc WHERE product_code=?');
+		$stmt = $conn->prepare('SELECT product_code FROM product WHERE product_code=?');
 		$stmt->bind_param('s',$pcode);
 		$stmt->execute();
 		$res = $stmt->get_result();
