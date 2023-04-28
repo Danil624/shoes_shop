@@ -64,12 +64,12 @@
                 </td>
               </tr>
               <tr>
-              <th>ID</th>
-                <th>Изображение</th>
-                <th>Товар</th>
-                <th>Цена</th>
-                <th>Кол-во</th>
-                <th>Сумма</th>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
                 <th>
                   <a href="action.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
                 </th>
@@ -77,7 +77,7 @@
             </thead>
             <tbody>
               <?php
-               include 'config.php';
+                require 'config.php';
                 $stmt = $conn->prepare('SELECT * FROM cart');
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -127,7 +127,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-    // Изменить количество товара
+    // Change the item quantity
     $(".itemQty").on('change', function() {
       var $el = $(this).closest('tr');
 
@@ -150,7 +150,7 @@
       });
     });
 
-    // Загрузить общее количество товаров, добавленных в корзину, и отобразить их на панели навигации.
+    // Load total no.of items added in the cart and display in the navbar
     load_cart_item_number();
 
     function load_cart_item_number() {

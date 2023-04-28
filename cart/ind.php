@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +11,7 @@
 </head>
 
 <body>
-  <!-- панель навигации -->
+  <!-- Navbar start -->
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -35,13 +34,14 @@
       </ul>
     </div>
   </nav>
-   <!-- панель навигации -->
-  <!-- Отображение продуктов начало -->
+  <!-- Navbar end -->
+
+  <!-- Displaying Products Start -->
   <div class="container">
     <div id="message"></div>
     <div class="row mt-2 pb-3">
-      <?php 
-      include 'config.php';
+      <?php
+  			include 'config.php';
   			$stmt = $conn->prepare('SELECT * FROM product');
   			$stmt->execute();
   			$result = $stmt->get_result();
@@ -81,8 +81,7 @@
       <?php endwhile; ?>
     </div>
   </div>
-    <!--Отображение продуктов конец -->
-
+  <!-- Displaying Products End -->
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
@@ -90,7 +89,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-      //Отправить информацию о продукте на сервер
+    // Send product details in the server
     $(".addItemBtn").click(function(e) {
       e.preventDefault();
       var $form = $(this).closest(".form-submit");
@@ -121,7 +120,7 @@
       });
     });
 
-    //Загрузить общее количество товаров, добавленных в корзину, и отобразить их на панели навигации.
+    // Load total no.of items added in the cart and display in the navbar
     load_cart_item_number();
 
     function load_cart_item_number() {

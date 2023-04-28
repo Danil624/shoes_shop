@@ -1,5 +1,5 @@
 <?php
-	include 'config.php';
+	require 'config.php';
 
 	$grand_total = 0;
 	$allItems = '';
@@ -102,7 +102,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-    // Отправка данных формы на сервер
+    // Sending Form data to the server
     $("#placeOrder").submit(function(e) {
       e.preventDefault();
       $.ajax({
@@ -115,7 +115,7 @@
       });
     });
 
-    // Загрузить общее количество товаров, добавленных в корзину, и отобразить их на панели навигации.
+    // Load total no.of items added in the cart and display in the navbar
     load_cart_item_number();
 
     function load_cart_item_number() {

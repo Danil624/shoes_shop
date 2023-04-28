@@ -1,7 +1,8 @@
 <?php
 	session_start();
-	include 'config.php';
-	// Добавьте товары в корзину
+	require 'config.php';
+
+	// Add products into the cart table
 	if (isset($_POST['pid'])) {
 	  $pid = $_POST['pid'];
 	  $pname = $_POST['pname'];
@@ -35,7 +36,7 @@
 	  }
 	}
 
-	// Получить количество товаров, доступных в таблице корзины
+	// Get no.of items available in the cart table
 	if (isset($_GET['cartItem']) && isset($_GET['cartItem']) == 'cart_item') {
 	  $stmt = $conn->prepare('SELECT * FROM cart');
 	  $stmt->execute();
@@ -45,7 +46,7 @@
 	  echo $rows;
 	}
 
-	// Удалить отдельные позиции из корзины
+	// Remove single items from cart
 	if (isset($_GET['remove'])) {
 	  $id = $_GET['remove'];
 
@@ -57,7 +58,8 @@
 	  $_SESSION['message'] = 'Item removed from the cart!';
 	  header('location:cart.php');
 	}
-	// Удалить сразу все товары из корзины
+
+	// Remove all items at once from cart
 	if (isset($_GET['clear'])) {
 	  $stmt = $conn->prepare('DELETE FROM cart');
 	  $stmt->execute();
@@ -66,7 +68,7 @@
 	  header('location:cart.php');
 	}
 
-	// Установить общую стоимость товара в таблице корзины
+	// Set total price of the product in the cart table
 	if (isset($_POST['qty'])) {
 	  $qty = $_POST['qty'];
 	  $pid = $_POST['pid'];
@@ -79,7 +81,7 @@
 	  $stmt->execute();
 	}
 
-	// оформить заказ и сохранить информацию о клиенте в таблице заказов
+	// Checkout and save customer info in the orders table
 	if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 	  $name = $_POST['name'];
 	  $email = $_POST['email'];
