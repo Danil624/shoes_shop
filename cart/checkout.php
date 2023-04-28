@@ -30,13 +30,13 @@
 
 <body>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="index.php"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Mobile Store</a>
-    <!-- Toggler/collapsibe Button -->
+  
+<!-- Кнопка переключения/сворачивания -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Navbar links -->
+    
+<!-- Ссылки на панели навигации -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -102,7 +102,8 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-    // Sending Form data to the server
+ 
+// Отправка данных формы на сервер
     $("#placeOrder").submit(function(e) {
       e.preventDefault();
       $.ajax({
@@ -114,8 +115,7 @@
         }
       });
     });
-
-    // Load total no.of items added in the cart and display in the navbar
+// Загрузить общее количество товаров, добавленных в корзину, и отобразить на панели навигации
     load_cart_item_number();
 
     function load_cart_item_number() {

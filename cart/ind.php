@@ -19,15 +19,7 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.php"><i class="fas fa-mobile-alt mr-2"></i>Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-th-list mr-2"></i>Categories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="checkout.php"><i class="fas fa-money-check-alt mr-2"></i>Checkout</a>
-        </li>
+        ы
         <li class="nav-item">
           <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a>
         </li>
@@ -36,7 +28,8 @@
   </nav>
   <!-- Navbar end -->
 
-  <!-- Displaying Products Start -->
+  
+<!-- Начало отображения продуктов -->
   <div class="container">
     <div id="message"></div>
     <div class="row mt-2 pb-3">
@@ -60,7 +53,7 @@
               <form action="" class="form-submit">
                 <div class="row p-2">
                   <div class="col-md-6 py-1 pl-4">
-                    <b>Quantity : </b>
+                    <b>кол-во: </b>
                   </div>
                   <div class="col-md-6">
                     <input type="number" class="form-control pqty" value="<?= $row['product_qty'] ?>">
@@ -71,8 +64,7 @@
                 <input type="hidden" class="pprice" value="<?= $row['product_price'] ?>">
                 <input type="hidden" class="pimage" value="<?= $row['product_image'] ?>">
                 <input type="hidden" class="pcode" value="<?= $row['product_code'] ?>">
-                <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-                  cart</button>
+                <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Добавить в корзину</button>
               </form>
             </div>
           </div>
@@ -81,7 +73,8 @@
       <?php endwhile; ?>
     </div>
   </div>
-  <!-- Displaying Products End -->
+
+<!-- Отображение продуктов Конец -->
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
@@ -89,7 +82,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-    // Send product details in the server
+// Отправляем детали продукта на сервер
     $(".addItemBtn").click(function(e) {
       e.preventDefault();
       var $form = $(this).closest(".form-submit");
@@ -119,8 +112,7 @@
         }
       });
     });
-
-    // Load total no.of items added in the cart and display in the navbar
+// Загрузить общее количество товаров, добавленных в корзину, и отобразить на панели навигации
     load_cart_item_number();
 
     function load_cart_item_number() {

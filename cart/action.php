@@ -1,8 +1,7 @@
 <?php
 	session_start();
 	require 'config.php';
-
-	// Add products into the cart table
+// Добавляем товары в корзину
 	if (isset($_POST['pid'])) {
 	  $pid = $_POST['pid'];
 	  $pname = $_POST['pname'];
@@ -26,17 +25,19 @@
 
 	    echo '<div class="alert alert-success alert-dismissible mt-2">
 						  <button type="button" class="close" data-dismiss="alert">&times;</button>
-						  <strong>Item added to your cart!</strong>
+						  <strong>
+						  Товар добавлен в вашу корзину!</strong>
 						</div>';
 	  } else {
 	    echo '<div class="alert alert-danger alert-dismissible mt-2">
 						  <button type="button" class="close" data-dismiss="alert">&times;</button>
-						  <strong>Item already added to your cart!</strong>
+						  <strong>
+						  Товар уже добавлен в вашу корзину!</strong>
 						</div>';
 	  }
 	}
 
-	// Get no.of items available in the cart table
+// Получить количество товаров, доступных в таблице корзины
 	if (isset($_GET['cartItem']) && isset($_GET['cartItem']) == 'cart_item') {
 	  $stmt = $conn->prepare('SELECT * FROM cart');
 	  $stmt->execute();
@@ -46,7 +47,7 @@
 	  echo $rows;
 	}
 
-	// Remove single items from cart
+// Удалить отдельные товары из корзины
 	if (isset($_GET['remove'])) {
 	  $id = $_GET['remove'];
 
@@ -59,7 +60,7 @@
 	  header('location:cart.php');
 	}
 
-	// Remove all items at once from cart
+// Удалить сразу все товары из корзины
 	if (isset($_GET['clear'])) {
 	  $stmt = $conn->prepare('DELETE FROM cart');
 	  $stmt->execute();
@@ -68,7 +69,7 @@
 	  header('location:cart.php');
 	}
 
-	// Set total price of the product in the cart table
+// Установить общую стоимость товара в таблице корзины
 	if (isset($_POST['qty'])) {
 	  $qty = $_POST['qty'];
 	  $pid = $_POST['pid'];
@@ -81,7 +82,7 @@
 	  $stmt->execute();
 	}
 
-	// Checkout and save customer info in the orders table
+// Оформить заказ и сохранить информацию о покупателе в таблице заказов
 	if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 	  $name = $_POST['name'];
 	  $email = $_POST['email'];
