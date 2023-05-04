@@ -11,7 +11,7 @@
 <?
 require 'connect.php';
 $id_categ = $_GET['id_categ']; 
-$query = "SELECT * FROM produc WHERE categ=".$id_categ;     
+$query = "SELECT * FROM product WHERE categ=".$id_categ;     
 	$rs_result = mysqli_query ($conn, $query);    
    
 	while ($row = mysqli_fetch_array($rs_result)) 

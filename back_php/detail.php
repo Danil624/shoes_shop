@@ -1,7 +1,7 @@
 <?
 $conn = new mysqli("localhost", "qwe", "232001","shoes");
-$id_categ = $_GET['id_categ']; 
-$query = "SELECT * FROM product ";     
+$id_ = $_GET["id"]; 
+$query = "SELECT * FROM product";     
 	$rs_result = mysqli_query ($conn, $query);    
    
 	while ($row = mysqli_fetch_array($rs_result)) 
