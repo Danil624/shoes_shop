@@ -18,9 +18,6 @@ $query = "SELECT * FROM product WHERE categ=".$id_categ;
 	{    
 	
 	echo ' 
-   
-   
-        
 <div class="col-md-3 col-lg-3 mb-4 text-center">
 <div class="product-entry border">
     <a href="#" class="prod-img">
